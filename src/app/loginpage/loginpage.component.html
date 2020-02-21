@@ -1,0 +1,62 @@
+
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/loginpage">Login</a>
+        <a class="nav-item nav-link" routerLink="/register">Register</a>
+        
+    </div>
+    
+</nav>
+ 
+  
+<div class="jumbotron">
+    <div class="container">
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group">
+        <label class="col-sm-6" >Username</label>
+        <input class="col-sm-6"  class="form-control"  pattern="[a-zA-Z ]*"  maxlength="20" (keydown.space)="$event.preventDefault();" type="text" #name="ngModel" [(ngModel)] = "user.name" name="name" required/>
+        <div class="validation-error" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div *ngIf="name.errors.required">
+        Username is required!
+       </div>
+       <div *ngIf="name.errors.pattern">
+        Invalid Username..
+       </div> 
+       <div *ngIf="name.errors.maxlength">
+       Maximum length should be 20..
+       </div> 
+       <!-- <div *ngIf="name.errors.minlength">
+        Minimum length should be 6..
+        </div>  -->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-6">password</label>
+        <input class="col-sm-6" class="form-control" (keydown.space)="$event.preventDefault();" pattern="^[a-zA-Z]\w{3,14}$"  type="text" #pwd="ngModel" [(ngModel)] = "user.pwd" name="pwd" required minlength="4"/>
+        <!-- <div *ngIf="pwd.invalid"> -->
+          <div class="validation-error" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)">
+            <div *ngIf= "pwd.errors.required">
+              Password is required!
+            </div>
+            <!-- <div *ngIf = "pwd.errors.minlength">
+              Password must be at least 4 characters.
+            </div> -->
+            <div *ngIf="pwd.errors.pattern">
+                The password's first character must be a letter, it must contain at least 4 characters and no more than 15 characters and no characters other than letters, numbers and the underscore may be used e.g.aBc45DSD_sdf,abcd
+
+               </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+</div>
+</div>
+<span>{{msg}}</span>
+
+
+
+

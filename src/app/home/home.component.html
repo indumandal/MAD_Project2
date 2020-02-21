@@ -1,0 +1,60 @@
+<!-- <p>home page</p> -->
+<button class="btn btn-primary" (click)="downloadPDF()">Download PDF</button>
+<br><br>
+<div  class="table responsive" #content style="text-align: center;">
+<div class="jumbtron">
+    <h6 class="display-12 text-center">Employee List</h6>
+    <hr>
+    <div class="row">
+      <!-- <div class="col-md-2">
+        
+
+      </div> -->
+      <div id="content" #content class="col-md-12">
+     <!--  hiiiiii
+       <button (click)="getUsers()">list users</button>
+ <div *ngFor="let user of users">
+    {{ user | json }}
+</div> -->
+<div class="table-responsive">
+<table class="table table-hover" >
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Address</th>
+      <th>Contact No.</th>
+      <th>Username</th>
+      <th>Action</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of users">
+      <!-- <td >{{emp.id}}]-{{emp.email}}</td> -->
+       <!-- <td >{{emp.email}}</td>
+      <td >{{emp.first_name}}</td>
+      <td >{{emp.last_name}}</td>
+      <td>{{emp.avatar}}</td>
+      <td>Edit</td> --> 
+      <td>{{emp.Fname}}</td>
+      <td>{{emp.lname}}</td>
+      <td>{{emp.Address}}</td>
+      <td>{{emp.Number}}</td>
+      <td>{{emp.uname}}</td>
+      <td><button class="btn btn-primary" (click)="Edit(emp)">Edit</button></td>
+      <td><button class="btn btn-primary" (click)="Delete(emp)">Delete</button></td>
+    </tr>
+  </tbody>
+  </table>
+  <div  *ngFor="let error of eror">
+    {{error}}
+  </div>
+  </div>
+      </div>
+      <!-- <div class="col-md-2">
+        
+      </div> -->
+    </div>
+  </div>
+</div>

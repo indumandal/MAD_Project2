@@ -1,0 +1,126 @@
+
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/loginpage">Login</a>
+        <a class="nav-item nav-link" routerLink="/register">Register</a>
+        
+    </div>
+    
+</nav>
+ 
+  
+<div  class="jumbotron">
+    <div id="register"  class="container">
+<form #registerForm="ngForm" (ngSubmit)="onSubmit1(registerForm)">
+    <div class="form-group">
+        <label class="col-sm-6" >FirstName</label>
+        <input class="col-sm-6"  class="form-control" pattern="[a-zA-Z ]*" minlength="6" maxlength="20" (keydown.space)="$event.preventDefault();"  type="text" #Fname="ngModel" [(ngModel)] = "user1.Fname" name="Fname" required/>
+        <div class="validation-error" *ngIf="Fname.invalid && (Fname.dirty || Fname.touched)">
+        <div *ngIf="Fname.errors.required">
+        Firstname is required!
+       </div>
+       <div *ngIf="Fname.errors.pattern">
+        Invalid FirstName..
+       </div> 
+       <div *ngIf="Fname.errors.maxlength">
+       Maximum length should be 20..
+       </div> 
+       <div *ngIf="Fname.errors.minlength">
+        Minimum length should be 6..
+        </div> 
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-6" >LastName</label>
+        <input class="col-sm-6"  class="form-control" pattern="[a-zA-Z ]*" maxlength="20" (keydown.space)="$event.preventDefault();"  type="text" #lname="ngModel" [(ngModel)] = "user1.lname" name="lname" required/>
+        <div class="validation-error" *ngIf="lname.invalid && (lname.dirty || lname.touched)">
+        <div *ngIf="lname.errors.required">
+        Lastname is required!
+       </div>
+       <div *ngIf="lname.errors.pattern">
+        Invalid LastName..
+       </div> 
+       <div *ngIf="lname.errors.maxlength">
+       Maximum length should be 20..
+       </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-6" >Address</label>
+        <input class="col-sm-6"  class="form-control"  type="text" maxlength="40" (keydown.space)="$event.preventDefault();" #Address="ngModel" [(ngModel)] = "user1.Address" name="Address" required/>
+        <div class="validation-error" *ngIf="Address.invalid && (Address.dirty || Address.touched)">
+        <div *ngIf="Address.errors.required">
+            Address is required!
+       </div>
+       <div *ngIf="lname.errors.maxlength">
+        Maximum length should be 40..
+        </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-6">Contact Number</label>
+        <input class="col-sm-6"  class="form-control" (keydown.space)="$event.preventDefault();" pattern="^((\+)?(\d{2}[-]))?(\d{10}){1}?$" type="text" #Number="ngModel" [(ngModel)] = "user1.Number" name="Number" required/>
+        <!-- <div *ngIf="pwd.invalid"> -->
+          <div class="validation-error" *ngIf="Number.invalid && (Number.dirty || Number.touched)">
+            <div *ngIf= "Number.errors.required">
+              Contact  Number is required!
+            </div>
+            <!-- <div *ngIf = "Number.errors.minlength">
+                Contact   Number must be of 10 digit .
+            </div>
+            <div *ngIf = "Number.errors.maxlength">
+                Contact   Number must be of 10 digit .
+            </div> -->
+            <div *ngIf="Number.errors.pattern">
+                Invalid mobile number..e.g +91-9822345654,9822345654
+               </div> 
+        </div>
+    </div>
+
+<div class="form-group">
+        <label class="col-sm-6">Username</label>
+        <input class="col-sm-6" class="form-control" pattern="[a-zA-Z ]*"  maxlength="20" (keydown.space)="$event.preventDefault();"  type="text" #uname="ngModel" [(ngModel)] = "user1.uname" name="uname" required maxlength="10"/>
+        
+          <div class="validation-error" *ngIf="uname.invalid && (uname.dirty || uname.touched)">
+            <div *ngIf= "uname.errors.required">
+                Username is required!
+            </div>
+            <div *ngIf="uname.errors.pattern">
+                Invalid Username..
+               </div> 
+               <div *ngIf="uname.errors.maxlength">
+               Maximum length should be 20..
+               </div> 
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-6">Password</label>
+        <input class="col-sm-6" class="form-control" (keydown.space)="$event.preventDefault();" pattern="^[a-zA-Z]\w{3,14}$"  type="text" #pwd="ngModel" [(ngModel)] = "user1.pwd" name="pwd" required maxlength="10"/>
+        
+          <div class="validation-error" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)">
+            <div *ngIf= "pwd.errors.required">
+                Password is required!
+            </div>
+            <div *ngIf="pwd.errors.pattern">
+                The password's first character must be a letter, it must contain at least 4 characters and no more than 15 characters and no characters other than letters, numbers and the underscore may be used e.g.aBc45DSD_sdf,abcd
+
+               </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+</div>
+</div>
+<span>{{msg}}</span>
+
+
+
+
+

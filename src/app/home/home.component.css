@@ -1,0 +1,9 @@
+thead>tr>th{
+    cursor: pointer;
+    width:500px;
+    background-color: blueviolet;
+}
+tbody>tr>td{
+    background-color:lightgreen;
+    width: 500px;
+}
